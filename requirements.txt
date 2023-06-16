@@ -13,5 +13,5 @@ scikit-learn==1.2.2
 scipy==1.8.1
 seaborn==0.11.2
 SQLAlchemy==1.4.25
-streamlit==0.84.2
+streamlit==1.21.0
 wordcloud==1.8.2.2
