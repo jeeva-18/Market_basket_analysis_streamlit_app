@@ -29,11 +29,11 @@ from mlxtend.frequent_patterns import association_rules
 from sqlalchemy import create_engine
 
 
-host = st.secrets["host"]
-user = st.secrets["user"]
-password = st.secrets["password"]
-port = st.secrets["port"]
-database = st.secrets["database"]
+host = 'database-1.cujz4kbilje1.eu-north-1.rds.amazonaws.com'
+user = 'admin'
+password = 'Qwe12345'
+port = '3306'
+database = 'database-1'
 
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
