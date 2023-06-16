@@ -118,7 +118,7 @@ with col3:
 
 st.markdown("----")
 
-df = pd.read_csv(r'E:\market\Assets/market.csv')
+# df = pd.read_csv(r'E:\market\Assets/market.csv')
 
 st.markdown("#### ***Lets take a look at the data:***")
 """
@@ -149,13 +149,13 @@ def load_data():
     return data
 #loading the data
 df = load_data() 
-df_head = pd.read_csv(r"E:\market\df_head.csv")
+df_head = pd.read_csv("df_head.csv")
 with col1:
     st.markdown("***The below is the first 5 rows of the cleaed dataset***")
     st.dataframe(df_head)
 with col2:
     pass
-df_info = pd.read_csv(r"E:\market\df_info.csv", index_col=0)
+df_info = pd.read_csv("df_info.csv", index_col=0)
 with col3:
     st.markdown("***The below is the info of the data***")
     st.dataframe(df_info)
