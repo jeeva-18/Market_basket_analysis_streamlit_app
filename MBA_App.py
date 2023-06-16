@@ -38,7 +38,24 @@ st.set_page_config(
     page_icon="🧊",
     layout="wide",
 )
+@st.cache_data()
+def load_data():
+    """
+    This fuction loads data from the aws rds mysql table
+    """
+    data = None
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{database}")
 
+    try:
+        query = f"SELECT * FROM MBA_Online_Retail_Data"
+        data = pd.read_sql(query,engine)
+
+    except Exception as e:
+        print(str(e))
+    
+    return data
+#loading the data
+df = load_data() 
 
 col1, col2, col3 = st.columns((.1,1,.1))
 
@@ -131,24 +148,6 @@ st.markdown(f"###### ***The shape of the data***: {df.shape}")
 
 col1, col2,col3 = st.columns((1, 0.01,.5))
 
-@st.cache_data()
-def load_data():
-    """
-    This fuction loads data from the aws rds mysql table
-    """
-    data = None
-    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{database}")
-
-    try:
-        query = f"SELECT * FROM MBA_Online_Retail_Data"
-        data = pd.read_sql(query,engine)
-
-    except Exception as e:
-        print(str(e))
-    
-    return data
-#loading the data
-df = load_data() 
 df_head = pd.read_csv("df_head.csv")
 with col1:
     st.markdown("***The below is the first 5 rows of the cleaed dataset***")
