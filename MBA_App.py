@@ -762,12 +762,7 @@ with col2:
                 "`MLxtend association_rules(), The function generates a DataFrame of association "
                 "rules including the metrics 'score', 'confidence', and 'lift'")
     with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
-        rules = pd.read_csv('rules.csv')
-        # Sort values based on lift
-        rules = rules.sort_values("lift",ascending=False).reset_index(drop= True)
-        rules.antecedents = rules.antecedents.apply(lambda x:list(x))
-        rules.consequents = rules.consequents.apply(lambda x:list(x))
-    st.success('Done!')
+        rules = pd.read_csv('new_rules.csv')
 
     """Assosiation Rules"""
     st.dataframe(rules.head())
