@@ -24,38 +24,28 @@ from sklearn.cluster import KMeans
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
 
+#lets import our data from the AWS RDS MySQL DataBase
+#db info
 from sqlalchemy import create_engine
 
-host = 'database-1.cujz4kbilje1.eu-north-1.rds.amazonaws.com'
-user = 'admin'
-password = 'Qwe12345'
-port = '3306'
-database = 'database-1'
+
+host = st.secrets["host"]
+user = st.secrets["user"]
+password = st.secrets["password"]
+port = st.secrets["port"]
+database = st.secrets["database"]
 
 
-st.set_page_config(
-    page_title="Market Basket Analysis App",
-    page_icon="🧊",
-    layout="wide",
-)
-@st.cache_data()
-def load_data():
-    """
-    This fuction loads data from the aws rds mysql table
-    """
-    data = None
-    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{database}")
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
-    try:
-        query = f"SELECT * FROM MBA_Online_Retail_Data"
-        data = pd.read_sql(query,engine)
 
-    except Exception as e:
-        print(str(e))
-    
-    return data
-#loading the data
-df = load_data() 
+
+st.set_page_config( page_title="Market Basket Analysis App",
+                    page_icon= "random",
+                    layout="wide"
+ )
+
+
 
 col1, col2, col3 = st.columns((.1,1,.1))
 
@@ -128,14 +118,35 @@ with col3:
     * ***CustomerID:*** Customer number. Nominal, a 5-digit integral number uniquely assigned to each customer.
     * ***Country:*** Country name. Nominal, the name of the country where each customer resides.
 
+    ###### **The data source:**
     
     """
-    # st.image("Assets/UCI_ML_REPO.png", caption="https://archive.ics.uci.edu/ml/datasets/online+retail")
+
+    st.image("Assets/UCI_ML_REPO.png", caption="https://archive.ics.uci.edu/ml/datasets/online+retail")
 
 
 st.markdown("----")
 
-# df = pd.read_csv(r'E:\market\Assets/market.csv')
+@st.cache(allow_output_mutation=True, ttl= 1200)
+def load_data():
+    """
+    This fuction loads data from the aws rds mysql table
+    """
+    data = None
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{database}")
+
+    try:
+        query = f"SELECT * FROM MBA_Online_Retail_Data"
+        data = pd.read_sql(query,engine)
+
+    except Exception as e:
+        print(str(e))
+    
+    return data
+#loading the data
+df = load_data() 
+
+
 
 st.markdown("#### ***Lets take a look at the data:***")
 """
@@ -159,7 +170,13 @@ with col3:
     st.markdown("***The below is the info of the data***")
     st.dataframe(df_info)
 
-@st.cache_data()
+st.success("If you want to take a look at how the data was cleaned, you "
+            "can go check out the jupyter notebook of this project at: "
+            "https://github.com/kkrusere/Market-Basket-Analysis-on-the-Online-Retail-Data/blob/main/MBA_Online-Retail_Data.ipynb")
+
+######################functions############################
+
+@st.cache(allow_output_mutation=True)
 def group_Quantity_and_SalesRevenue(df,string):
     """ 
     This function inputs the main data frame and feature name 
@@ -170,7 +187,7 @@ def group_Quantity_and_SalesRevenue(df,string):
 
     return df
 
-@st.cache_data()
+@st.cache(allow_output_mutation=True)
 def choose_country(country = "All", data = df):
   """
   This fuction takes in a country name and filters the data frame for just country
@@ -183,6 +200,7 @@ def choose_country(country = "All", data = df):
     temp_df.reset_index(drop= True, inplace= True)
 
     return temp_df
+
 
 def wordcloud_of_Description(df, title):
     """
@@ -199,7 +217,7 @@ def wordcloud_of_Description(df, title):
 
 
 country_list = ["All"] + list(dict(df['Country'].value_counts()).keys())
-@st.cache_data()
+@st.cache(allow_output_mutation=True)
 def choose_country(country, data = df):
   """
   This fuction takes in a country name and filters the data frame for just country
@@ -212,8 +230,8 @@ def choose_country(country, data = df):
     temp_df.reset_index(drop= True, inplace= True)
 
     return temp_df
-
-    st.markdown("---")
+##################################################################################
+st.markdown("---")
 st.markdown(" <h3 style='text-align: center;'>Exploratory Data Analysis <i>(EDA)</i>:</h3>", unsafe_allow_html=True)
 col1, col2, col3= st.columns((.1,1,.1))
 with col1:
@@ -531,13 +549,11 @@ with col3:
 col1, col2, col3= st.columns((1,.1,1))
 with col1:
     #we can also look at the volume of Invoice Numbers hourly data 
-    Hourly_Sales = (dataframe.groupby('Hour')["Quantity"].sum()).reset_index()
-    fig = px.bar(Hourly_Sales, title='Hourly Volume of quantity sold')
-    # fig.show(renderer='png', height=700, width=1000)
-    fig.show(height=700, width=1000)
+    Hourly_Sales = (dataframe.groupby('Hour').sum()["Quantity"]).reset_index()
+    fig = px.bar(Hourly_Sales, x='Hour', y='Quantity', title='Hourly Volume of quantity sold')
+    #fig.show(renderer='png', height=700, width=1000)
+    #fig.show(height=700, width=1000)
     st.plotly_chart(fig)
-
-
 
 with col2:
     pass
