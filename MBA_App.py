@@ -765,8 +765,8 @@ with col2:
         rules = pd.read_csv('rules.csv')
         # Sort values based on lift
         rules = rules.sort_values("lift",ascending=False).reset_index(drop= True)
-        rules["antecedents"] = rules["antecedents"].apply(change_dtype_to_list)
-        rules["consequents"] = rules["consequents"].apply(change_dtype_to_list)
+        rules.antecedents = rules.antecedents.apply(lambda x:list(x))
+        rules.consequents = rules.consequents.apply(lambda x:list(x))
     st.success('Done!')
 
     """Assosiation Rules"""
