@@ -130,7 +130,7 @@ with col3:
 
 st.markdown("----")
 
-@st.cache(allow_output_mutation=True, ttl= 1200)
+@st.cache_data(experimental_allow_widgets =True, ttl= 1200)
 def load_data():
     """
     This fuction loads data from the aws rds mysql table
@@ -179,7 +179,7 @@ st.success("If you want to take a look at how the data was cleaned, you "
 
 ######################functions############################
 
-@st.cache(allow_output_mutation=True)
+@st.cache_data(experimental_allow_widgets =True)
 def group_Quantity_and_SalesRevenue(df,string):
     """ 
     This function inputs the main data frame and feature name 
@@ -190,7 +190,7 @@ def group_Quantity_and_SalesRevenue(df,string):
 
     return df
 
-@st.cache(allow_output_mutation=True)
+@st.cache_data(experimental_allow_widgets =True)
 def choose_country(country = "All", data = df):
   """
   This fuction takes in a country name and filters the data frame for just country
@@ -220,7 +220,7 @@ def wordcloud_of_Description(df, title):
 
 
 country_list = ["All"] + list(dict(df['Country'].value_counts()).keys())
-@st.cache(allow_output_mutation=True)
+@st.cache_data(experimental_allow_widgets =True)
 def choose_country(country, data = df):
   """
   This fuction takes in a country name and filters the data frame for just country
