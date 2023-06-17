@@ -763,7 +763,6 @@ with col2:
                 "rules including the metrics 'score', 'confidence', and 'lift'")
     with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
         rules = pd.read_csv('new_rules (1).csv')
-        
 
     """Assosiation Rules"""
     st.dataframe(rules.head())
