@@ -26,7 +26,7 @@ from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
 
 
-warnings.filterwarnings('ignore)
+warnings.filterwarnings('ignore')
 #lets import our data from the AWS RDS MySQL DataBase
 #db info
 from sqlalchemy import create_engine
