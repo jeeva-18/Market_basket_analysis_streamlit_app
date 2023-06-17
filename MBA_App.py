@@ -759,7 +759,7 @@ with col2:
                 "`MLxtend association_rules(), The function generates a DataFrame of association "
                 "rules including the metrics 'score', 'confidence', and 'lift'")
     with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
-        rules = association_rules(apriori(basket, min_support=0.01, use_colnames=True), metric="lift", min_threshold=1)
+        rules = association_rules(apriori(basket.astype('bool'), min_support=0.01, use_colnames=True), metric="lift", min_threshold=1)
         # Sort values based on lift
         rules = rules.sort_values("lift",ascending=False).reset_index(drop= True)
         rules["antecedents"] = rules["antecedents"].apply(change_dtype_to_list)
