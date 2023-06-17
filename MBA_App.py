@@ -774,54 +774,52 @@ with col3:
 
 
 
-# st.markdown("----")
-# st.markdown(" <h3 style='text-align: center;'>Customer Segmentation:</h3>", unsafe_allow_html=True)
-# """
-# Customer segmentation is the process of dividing customers into groups based on common characteristics so companies can market to each group effectively and appropriately.
-# * RFM (recency, frequency, monetary) Analysis
-# """
-# """
-# **RFM (recency, frequency, monetary) Analysis**
+st.markdown("----")
+st.markdown(" <h3 style='text-align: center;'>Customer Segmentation:</h3>", unsafe_allow_html=True)
+"""
+Customer segmentation is the process of dividing customers into groups based on common characteristics so companies can market to each group effectively and appropriately.
+* RFM (recency, frequency, monetary) Analysis
+"""
+"""
+**RFM (recency, frequency, monetary) Analysis**
 
-# The “RFM” in RFM analysis stands for recency, frequency and monetary value. RFM analysis is a way to use data based on existing customer behavior to predict how a new customer is likely to act in the future.
+The “RFM” in RFM analysis stands for recency, frequency and monetary value. RFM analysis is a way to use data based on existing customer behavior to predict how a new customer is likely to act in the future.
 
-# 1. How recently a customer has transacted with a brand
-# 2. How frequently they’ve engaged with a brand
-# 3. How much money they’ve spent on a brand’s products and services
+1. How recently a customer has transacted with a brand
+2. How frequently they’ve engaged with a brand
+3. How much money they’ve spent on a brand’s products and services
 
-# RFM analysis enables marketers to increase revenue by targeting specific groups of existing customers (i.e., customer segmentation) with messages and offers that are more likely to be relevant based on data about a particular set of behaviors.
-# """
+RFM analysis enables marketers to increase revenue by targeting specific groups of existing customers (i.e., customer segmentation) with messages and offers that are more likely to be relevant based on data about a particular set of behaviors.
+"""
 
-# rfm_country_list = [
-#                     'United Kingdom',
-#                     'Germany',
-#                     'France',
-#                     'EIRE',
-#                     'Spain',
-#                     'Netherlands',
-#                     'Switzerland',
-#                     'Belgium',
-#                     'Portugal',
-#                     'Australia']
+rfm_country_list = [
+                    'United Kingdom',
+                    'Germany',
+                    'France',
+                    'EIRE',
+                    'Spain',
+                    'Netherlands',
+                    'Switzerland',
+                    'Belgium',
+                    'Portugal',
+                    'Australia']
 
-# col1, col2, col3= st.columns((3))
-# with col1:
-#     option = st.selectbox(
-#         'Please Choose a country for the Recency, Frequency, Monetary Analysis',
-#         rfm_country_list)
-#     if option == "All":
-#         st.markdown("We will at data from All the countries")
-#     else:
-#         st.markdown(f"We will be looking at data from {option}")
-
-
-# RFM_df = choose_country(country=option)
-
-# #the first thing that we are going to need is the reference date 
-# #in this case the day after the last recorded date in the dataset plus a day
-# ref_date = RFM_df['InvoiceDate'].max() + dt.timedelta(days=1)
+col1, col2, col3= st.columns((3))
+with col1:
+    option = st.selectbox(
+        'Please Choose a country for the Recency, Frequency, Monetary Analysis',
+        rfm_country_list)
+    if option == "All":
+        st.markdown("We will at data from All the countries")
+    else:
+        st.markdown(f"We will be looking at data from {option}")
 
 
+RFM_df = choose_country(country=option)
+
+#the first thing that we are going to need is the reference date 
+#in this case the day after the last recorded date in the dataset plus a day
+ref_date = RFM_df['InvoiceDate'].max() + dt.timedelta(days=1)
 
 
 
@@ -831,7 +829,9 @@ with col3:
 
 
 
-# st.markdown("----")
+
+
+st.markdown("----")
 # st.markdown(" <h3 style='text-align: center;'>Product recomendation <i>(people who bought this also bought)</i>:</h3>", unsafe_allow_html=True)
 # col1, col2, col3= st.columns((.1,1,.1))
 # with col1:
