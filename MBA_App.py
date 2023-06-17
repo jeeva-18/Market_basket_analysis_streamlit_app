@@ -728,143 +728,143 @@ with col1:
 
 MBA_df = choose_country(country=option)
 
-# """
-# We are going to use the Apriori Algorithm for the association rule mining/analysis. Apriori is an algorithm for frequent item set mining and association rule learning over relational dataset. It proceeds by identifying the frequent individual items in the dataset and extending them to larger and larger item sets as long as those item sets appear sufficiently often in the dataset. The frequent item sets determined by Apriori can be used to determine association rules which highlight general trends, pattern, and relationships in the dataset.
-# """
-# #we are going to rearrage the dataframe having the 'InvoiceNo' column the index, so that each row contains all the items purchased under the same invoice
-# basket = (MBA_df.groupby(['InvoiceNo', 'Description'])['Quantity'].sum().unstack().reset_index().fillna(0).set_index('InvoiceNo'))
-# st.markdown("Below is the one-hot encoded basket with the InvoiceNo #s being the index")
-
-# def change_dtype_to_list(x):
-#     x = list(x)
-#     return x
-
-# def encoder(x):
-#   if(x <= 0):
-#     return 0
-#   if(x >= 1):
-#     return 1
-# col1, col2, col3= st.columns((.1,1,.1))
-# with col1:
-#     pass
-# with col2:
-#     with st.spinner("One-Hot Encoding the basket..."):
-#         #now we encode
-#         basket = basket.applymap(encoder)
-
-#         st.dataframe(basket.head())
-#     st.success('Done!')
-
-
-#     st.markdown("The next step will be to generate the frequent itemsets that have a support of at "
-#                 "least 10% using the MLxtend Apriori fuction which returns frequent itemsets from a "
-#                 "one-hot DataFrame. And then can look at the rules  of association using the "
-#                 "`MLxtend association_rules(), The function generates a DataFrame of association "
-#                 "rules including the metrics 'score', 'confidence', and 'lift'")
-#     with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
-#         rules = association_rules(apriori(basket.astype('bool'), min_support=0.01, use_colnames=True), metric="lift", min_threshold=1)
-#         # Sort values based on lift
-#         rules = rules.sort_values("lift",ascending=False).reset_index(drop= True)
-#         rules["antecedents"] = rules["antecedents"].apply(change_dtype_to_list)
-#         rules["consequents"] = rules["consequents"].apply(change_dtype_to_list)
-#     st.success('Done!')
-
-#     """Assosiation Rules"""
-#     st.dataframe(rules.head())
-# with col3:
-#     pass
-
-
-
-
-
-
-st.markdown("----")
-st.markdown(" <h3 style='text-align: center;'>Customer Segmentation:</h3>", unsafe_allow_html=True)
 """
-Customer segmentation is the process of dividing customers into groups based on common characteristics so companies can market to each group effectively and appropriately.
-* RFM (recency, frequency, monetary) Analysis
+We are going to use the Apriori Algorithm for the association rule mining/analysis. Apriori is an algorithm for frequent item set mining and association rule learning over relational dataset. It proceeds by identifying the frequent individual items in the dataset and extending them to larger and larger item sets as long as those item sets appear sufficiently often in the dataset. The frequent item sets determined by Apriori can be used to determine association rules which highlight general trends, pattern, and relationships in the dataset.
 """
-"""
-**RFM (recency, frequency, monetary) Analysis**
+#we are going to rearrage the dataframe having the 'InvoiceNo' column the index, so that each row contains all the items purchased under the same invoice
+basket = (MBA_df.groupby(['InvoiceNo', 'Description'])['Quantity'].sum().unstack().reset_index().fillna(0).set_index('InvoiceNo'))
+st.markdown("Below is the one-hot encoded basket with the InvoiceNo #s being the index")
 
-The “RFM” in RFM analysis stands for recency, frequency and monetary value. RFM analysis is a way to use data based on existing customer behavior to predict how a new customer is likely to act in the future.
+def change_dtype_to_list(x):
+    x = list(x)
+    return x
 
-1. How recently a customer has transacted with a brand
-2. How frequently they’ve engaged with a brand
-3. How much money they’ve spent on a brand’s products and services
-
-RFM analysis enables marketers to increase revenue by targeting specific groups of existing customers (i.e., customer segmentation) with messages and offers that are more likely to be relevant based on data about a particular set of behaviors.
-"""
-
-rfm_country_list = [
-                    'United Kingdom',
-                    'Germany',
-                    'France',
-                    'EIRE',
-                    'Spain',
-                    'Netherlands',
-                    'Switzerland',
-                    'Belgium',
-                    'Portugal',
-                    'Australia']
-
-col1, col2, col3= st.columns((3))
-with col1:
-    option = st.selectbox(
-        'Please Choose a country for the Recency, Frequency, Monetary Analysis',
-        rfm_country_list)
-    if option == "All":
-        st.markdown("We will at data from All the countries")
-    else:
-        st.markdown(f"We will be looking at data from {option}")
-
-
-RFM_df = choose_country(country=option)
-
-#the first thing that we are going to need is the reference date 
-#in this case the day after the last recorded date in the dataset plus a day
-ref_date = RFM_df['InvoiceDate'].max() + dt.timedelta(days=1)
-
-
-
-
-
-
-
-
-
-
-
-st.markdown("----")
-st.markdown(" <h3 style='text-align: center;'>Product recomendation <i>(people who bought this also bought)</i>:</h3>", unsafe_allow_html=True)
+def encoder(x):
+  if(x <= 0):
+    return 0
+  if(x >= 1):
+    return 1
 col1, col2, col3= st.columns((.1,1,.1))
 with col1:
     pass
 with col2:
-    """
-    The product recommendation part of this project is going to make use of the Association Rules that where uncovered in the MBA section. Product recomentation is basically one of the advantages of Market Basket Analysis where you can recommend to customers products that are in the same itemsets as the customer's current products.
-    """
+    with st.spinner("One-Hot Encoding the basket..."):
+        #now we encode
+        basket = basket.applymap(encoder)
+
+        st.dataframe(basket.head())
+    st.success('Done!')
+
+
+    st.markdown("The next step will be to generate the frequent itemsets that have a support of at "
+                "least 10% using the MLxtend Apriori fuction which returns frequent itemsets from a "
+                "one-hot DataFrame. And then can look at the rules  of association using the "
+                "`MLxtend association_rules(), The function generates a DataFrame of association "
+                "rules including the metrics 'score', 'confidence', and 'lift'")
+    with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
+        rules = pd.read_csv('rules.csv')
+        # Sort values based on lift
+        rules = rules.sort_values("lift",ascending=False).reset_index(drop= True)
+        rules["antecedents"] = rules["antecedents"].apply(change_dtype_to_list)
+        rules["consequents"] = rules["consequents"].apply(change_dtype_to_list)
+    st.success('Done!')
+
+    """Assosiation Rules"""
+    st.dataframe(rules.head())
 with col3:
     pass
 
 
 
 
-st.markdown("---")
+
+
+# st.markdown("----")
+# st.markdown(" <h3 style='text-align: center;'>Customer Segmentation:</h3>", unsafe_allow_html=True)
+# """
+# Customer segmentation is the process of dividing customers into groups based on common characteristics so companies can market to each group effectively and appropriately.
+# * RFM (recency, frequency, monetary) Analysis
+# """
+# """
+# **RFM (recency, frequency, monetary) Analysis**
+
+# The “RFM” in RFM analysis stands for recency, frequency and monetary value. RFM analysis is a way to use data based on existing customer behavior to predict how a new customer is likely to act in the future.
+
+# 1. How recently a customer has transacted with a brand
+# 2. How frequently they’ve engaged with a brand
+# 3. How much money they’ve spent on a brand’s products and services
+
+# RFM analysis enables marketers to increase revenue by targeting specific groups of existing customers (i.e., customer segmentation) with messages and offers that are more likely to be relevant based on data about a particular set of behaviors.
+# """
+
+# rfm_country_list = [
+#                     'United Kingdom',
+#                     'Germany',
+#                     'France',
+#                     'EIRE',
+#                     'Spain',
+#                     'Netherlands',
+#                     'Switzerland',
+#                     'Belgium',
+#                     'Portugal',
+#                     'Australia']
+
+# col1, col2, col3= st.columns((3))
+# with col1:
+#     option = st.selectbox(
+#         'Please Choose a country for the Recency, Frequency, Monetary Analysis',
+#         rfm_country_list)
+#     if option == "All":
+#         st.markdown("We will at data from All the countries")
+#     else:
+#         st.markdown(f"We will be looking at data from {option}")
+
+
+# RFM_df = choose_country(country=option)
+
+# #the first thing that we are going to need is the reference date 
+# #in this case the day after the last recorded date in the dataset plus a day
+# ref_date = RFM_df['InvoiceDate'].max() + dt.timedelta(days=1)
 
 
 
 
 
 
-st.markdown("---")
 
-st.markdown("### ***Conclusion***")
 
-st.markdown("This was a very interesting project which covered a wide array"
-            " of topics that seem different but quite similar. For further "
-            "research or analysis, it would be interesting to do the market "
-            "basket analysis on the clusters that resulted (with the help of the"
-            " K-means clustering) from the recency, frequency, and monetary value "
-            "analysis and do market basket analysis on each of them")
+
+
+
+# st.markdown("----")
+# st.markdown(" <h3 style='text-align: center;'>Product recomendation <i>(people who bought this also bought)</i>:</h3>", unsafe_allow_html=True)
+# col1, col2, col3= st.columns((.1,1,.1))
+# with col1:
+#     pass
+# with col2:
+#     """
+#     The product recommendation part of this project is going to make use of the Association Rules that where uncovered in the MBA section. Product recomentation is basically one of the advantages of Market Basket Analysis where you can recommend to customers products that are in the same itemsets as the customer's current products.
+#     """
+# with col3:
+#     pass
+
+
+
+
+# st.markdown("---")
+
+
+
+
+
+
+# st.markdown("---")
+
+# st.markdown("### ***Conclusion***")
+
+# st.markdown("This was a very interesting project which covered a wide array"
+#             " of topics that seem different but quite similar. For further "
+#             "research or analysis, it would be interesting to do the market "
+#             "basket analysis on the clusters that resulted (with the help of the"
+#             " K-means clustering) from the recency, frequency, and monetary value "
+#             "analysis and do market basket analysis on each of them")
