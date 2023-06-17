@@ -728,51 +728,51 @@ with col1:
 
 MBA_df = choose_country(country=option)
 
-"""
-We are going to use the Apriori Algorithm for the association rule mining/analysis. Apriori is an algorithm for frequent item set mining and association rule learning over relational dataset. It proceeds by identifying the frequent individual items in the dataset and extending them to larger and larger item sets as long as those item sets appear sufficiently often in the dataset. The frequent item sets determined by Apriori can be used to determine association rules which highlight general trends, pattern, and relationships in the dataset.
-"""
-#we are going to rearrage the dataframe having the 'InvoiceNo' column the index, so that each row contains all the items purchased under the same invoice
-basket = (MBA_df.groupby(['InvoiceNo', 'Description'])['Quantity'].sum().unstack().reset_index().fillna(0).set_index('InvoiceNo'))
-st.markdown("Below is the one-hot encoded basket with the InvoiceNo #s being the index")
+# """
+# We are going to use the Apriori Algorithm for the association rule mining/analysis. Apriori is an algorithm for frequent item set mining and association rule learning over relational dataset. It proceeds by identifying the frequent individual items in the dataset and extending them to larger and larger item sets as long as those item sets appear sufficiently often in the dataset. The frequent item sets determined by Apriori can be used to determine association rules which highlight general trends, pattern, and relationships in the dataset.
+# """
+# #we are going to rearrage the dataframe having the 'InvoiceNo' column the index, so that each row contains all the items purchased under the same invoice
+# basket = (MBA_df.groupby(['InvoiceNo', 'Description'])['Quantity'].sum().unstack().reset_index().fillna(0).set_index('InvoiceNo'))
+# st.markdown("Below is the one-hot encoded basket with the InvoiceNo #s being the index")
 
-def change_dtype_to_list(x):
-    x = list(x)
-    return x
+# def change_dtype_to_list(x):
+#     x = list(x)
+#     return x
 
-def encoder(x):
-  if(x <= 0):
-    return 0
-  if(x >= 1):
-    return 1
-col1, col2, col3= st.columns((.1,1,.1))
-with col1:
-    pass
-with col2:
-    with st.spinner("One-Hot Encoding the basket..."):
-        #now we encode
-        basket = basket.applymap(encoder)
+# def encoder(x):
+#   if(x <= 0):
+#     return 0
+#   if(x >= 1):
+#     return 1
+# col1, col2, col3= st.columns((.1,1,.1))
+# with col1:
+#     pass
+# with col2:
+#     with st.spinner("One-Hot Encoding the basket..."):
+#         #now we encode
+#         basket = basket.applymap(encoder)
 
-        st.dataframe(basket.head())
-    st.success('Done!')
+#         st.dataframe(basket.head())
+#     st.success('Done!')
 
 
-    st.markdown("The next step will be to generate the frequent itemsets that have a support of at "
-                "least 10% using the MLxtend Apriori fuction which returns frequent itemsets from a "
-                "one-hot DataFrame. And then can look at the rules  of association using the "
-                "`MLxtend association_rules(), The function generates a DataFrame of association "
-                "rules including the metrics 'score', 'confidence', and 'lift'")
-    with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
-        rules = association_rules(apriori(basket.astype('bool'), min_support=0.01, use_colnames=True), metric="lift", min_threshold=1)
-        # Sort values based on lift
-        rules = rules.sort_values("lift",ascending=False).reset_index(drop= True)
-        rules["antecedents"] = rules["antecedents"].apply(change_dtype_to_list)
-        rules["consequents"] = rules["consequents"].apply(change_dtype_to_list)
-    st.success('Done!')
+#     st.markdown("The next step will be to generate the frequent itemsets that have a support of at "
+#                 "least 10% using the MLxtend Apriori fuction which returns frequent itemsets from a "
+#                 "one-hot DataFrame. And then can look at the rules  of association using the "
+#                 "`MLxtend association_rules(), The function generates a DataFrame of association "
+#                 "rules including the metrics 'score', 'confidence', and 'lift'")
+#     with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
+#         rules = association_rules(apriori(basket.astype('bool'), min_support=0.01, use_colnames=True), metric="lift", min_threshold=1)
+#         # Sort values based on lift
+#         rules = rules.sort_values("lift",ascending=False).reset_index(drop= True)
+#         rules["antecedents"] = rules["antecedents"].apply(change_dtype_to_list)
+#         rules["consequents"] = rules["consequents"].apply(change_dtype_to_list)
+#     st.success('Done!')
 
-    """Assosiation Rules"""
-    st.dataframe(rules.head())
-with col3:
-    pass
+#     """Assosiation Rules"""
+#     st.dataframe(rules.head())
+# with col3:
+#     pass
 
 
 
