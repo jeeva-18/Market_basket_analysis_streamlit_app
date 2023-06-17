@@ -6,6 +6,7 @@ import numpy as np
 import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
+import warnings 
 
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -24,6 +25,8 @@ from sklearn.cluster import KMeans
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
 
+
+warnings.filterwarnings('ignore)
 #lets import our data from the AWS RDS MySQL DataBase
 #db info
 from sqlalchemy import create_engine
