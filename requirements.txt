@@ -2,7 +2,7 @@ greenlet
 matplotlib==3.5.2
 mlxtend==0.22.0
 mysql-connector-python==8.0.29
-numpy==1.23.1
+numpy
 pandas==1.2.5
 Pillow==9.2.0
 plotly==5.9.0
@@ -15,4 +15,4 @@ seaborn==0.11.2
 SQLAlchemy==1.4.25
 streamlit==1.21.0
 wordcloud==1.8.2.2
-st_pages==0.4.0
+st_pages
