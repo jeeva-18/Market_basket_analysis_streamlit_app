@@ -170,17 +170,6 @@ mba_country_list = [
                     'Australia']
 
 col1, col2, col3= st.columns((3))
-with col1:
-#     option = st.selectbox(
-#         'Please Choose a country for the Market Basket Analysis',
-#         mba_country_list)
-#     if option == "All":
-#         st.markdown("We will at data from All the countries")
-#     else:
-#         st.markdown(f"We will be looking at data from {option}")
-
-
-# MBA_df = choose_country(country=option)
 
 """
 We are going to use the Apriori Algorithm for the association rule mining/analysis. Apriori is an algorithm for frequent item set mining and association rule learning over relational dataset. It proceeds by identifying the frequent individual items in the dataset and extending them to larger and larger item sets as long as those item sets appear sufficiently often in the dataset. The frequent item sets determined by Apriori can be used to determine association rules which highlight general trends, pattern, and relationships in the dataset.
