@@ -7,3 +7,8 @@ icon = "🏠"
 path = "others/page2.py"
 name = "Exploratory Data Analysis"
 icon = "⚽"
+
+[[pages]]
+path = "others/page3.py"
+name = "Market Basket Analysis"
+icon = "👜"
