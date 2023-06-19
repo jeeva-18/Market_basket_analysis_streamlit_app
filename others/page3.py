@@ -31,10 +31,34 @@ warnings.filterwarnings('ignore')
 #db info
 from sqlalchemy import create_engine
 
+host = 'database-1.cujz4kbilje1.eu-north-1.rds.amazonaws.com'
+user = 'admin'
+password = 'Qwe12345'
+port = '3306'
+database = 'database-1'
 
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+
+@st.cache_data(experimental_allow_widgets =False, ttl= 1200)
+def load_data():
+    """
+    This fuction loads data from the aws rds mysql table
+    """
+    data = None
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{database}")
+
+    try:
+        query = f"SELECT * FROM MBA_Online_Retail_Data"
+        data = pd.read_sql(query,engine)
+
+    except Exception as e:
+        print(str(e))
+    
+    return data
+#loading the data
+df = load_data() 
 
 @st.cache_data(experimental_allow_widgets =False)
 def group_Quantity_and_SalesRevenue(df,string):
