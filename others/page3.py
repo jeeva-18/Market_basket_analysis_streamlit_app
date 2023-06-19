@@ -174,12 +174,11 @@ col1, col2, col3= st.columns((3))
 """
 We are going to use the Apriori Algorithm for the association rule mining/analysis. Apriori is an algorithm for frequent item set mining and association rule learning over relational dataset. It proceeds by identifying the frequent individual items in the dataset and extending them to larger and larger item sets as long as those item sets appear sufficiently often in the dataset. The frequent item sets determined by Apriori can be used to determine association rules which highlight general trends, pattern, and relationships in the dataset.
 """
-#we are going to rearrage the dataframe having the 'InvoiceNo' column the index, so that each row contains all the items purchased under the same invoice
-# basket = (MBA_df.groupby(['InvoiceNo', 'Description'])['Quantity'].sum().unstack().reset_index().fillna(0).set_index('InvoiceNo'))
-st.markdown("Below is the one-hot encoded basket with the InvoiceNo #s being the index")
-
 
 with col1:
+"""
+We are going to use the Apriori Algorithm for the association rule mining/analysis. Apriori is an algorithm for frequent item set mining and association rule learning over relational dataset. It proceeds by identifying the frequent individual items in the dataset and extending them to larger and larger item sets as long as those item sets appear sufficiently often in the dataset. The frequent item sets determined by Apriori can be used to determine association rules which highlight general trends, pattern, and relationships in the dataset.
+"""
     pass
 with col2:
 #     with st.spinner("One-Hot Encoding the basket..."):
@@ -189,12 +188,15 @@ with col2:
 #         st.dataframe(basket.head())
 #     st.success('Done!')
 
+"""
 
-    st.markdown("The next step will be to generate the frequent itemsets that have a support of at "
-                "least 10% using the MLxtend Apriori fuction which returns frequent itemsets from a "
-                "one-hot DataFrame. And then can look at the rules  of association using the "
-                "`MLxtend association_rules(), The function generates a DataFrame of association "
-                "rules including the metrics 'score', 'confidence', and 'lift'")
+'The next step will be to generate the frequent itemsets that have a support of at "
+"least 10% using the MLxtend Apriori fuction which returns frequent itemsets from a "
+"one-hot DataFrame. And then can look at the rules  of association using the "
+"`MLxtend association_rules(), The function generates a DataFrame of association "
+"rules including the metrics 'score', 'confidence', and 'lift'
+
+"""
     with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
         rules = pd.read_csv('rules.csv')
 
