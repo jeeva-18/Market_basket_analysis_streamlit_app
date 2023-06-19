@@ -60,6 +60,61 @@ def load_data():
 #loading the data
 df = load_data() 
 
+@st.cache_data(experimental_allow_widgets =False)
+def group_Quantity_and_SalesRevenue(df,string):
+    """ 
+    This function inputs the main data frame and feature name 
+    The feature name is the column name that you want to group the Quantity and Sales Revenue
+    """
+
+    df = df[[f'{string}','Quantity','Sales Revenue']].groupby([f'{string}']).sum().sort_values(by= 'Sales Revenue', ascending = False).reset_index()
+
+    return df
+
+@st.cache_data(experimental_allow_widgets =False)
+def choose_country(country = "All", data = df):
+  """
+  This fuction takes in a country name and filters the data frame for just country
+  if the there is no country inputed the fuction return the un filtered dataframe
+  """
+  if country == "All":
+    return data
+  else:
+    temp_df = data[data["Country"] == country]
+    temp_df.reset_index(drop= True, inplace= True)
+
+    return temp_df
+
+
+def wordcloud_of_Description(df, title):
+    """
+    This fuction creates a word cloud
+    inputs a data frame converts it to tuples and uses the input 'title' as the title of the word cloud
+    """
+    plt.rcParams["figure.figsize"] = (20,20)
+    tuples = [tuple(x) for x in df.values]
+    wordcloud = WordCloud(max_font_size=100,  background_color="white").generate_from_frequencies(dict(tuples))
+    plt.imshow(wordcloud)
+    plt.axis('off')
+    plt.title(title, fontsize = 27)
+    plt.show()
+
+
+country_list = ["All"] + list(dict(df['Country'].value_counts()).keys())
+@st.cache_data(experimental_allow_widgets =False)
+def choose_country(country, data = df):
+  """
+  This fuction takes in a country name and filters the data frame for just country
+  if the there is no country inputed the fuction return the un filtered dataframe
+  """
+  if country == "All":
+    return data
+  else:
+    temp_df = data[data["Country"] == country]
+    temp_df.reset_index(drop= True, inplace= True)
+
+    return temp_df
+
 st.markdown(" <h3 style='text-align: center;'>Exploratory Data Analysis <i>(EDA)</i>:</h3>", unsafe_allow_html=True)
 col1, col2, col3= st.columns((.1,1,.1))
 with col1:
