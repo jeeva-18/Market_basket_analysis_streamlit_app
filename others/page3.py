@@ -175,14 +175,6 @@ col1, col2, col3= st.columns((3))
 """
 We are going to use the Apriori Algorithm for the association rule mining/analysis. Apriori is an algorithm for frequent item set mining and association rule learning over relational dataset. It proceeds by identifying the frequent individual items in the dataset and extending them to larger and larger item sets as long as those item sets appear sufficiently often in the dataset. The frequent item sets determined by Apriori can be used to determine association rules which highlight general trends, pattern, and relationships in the dataset.
 """
-with col1:
-#     with st.spinner("One-Hot Encoding the basket..."):
-#         #now we encode
-#         basket = basket.applymap(encoder)
-
-#         st.dataframe(basket.head())
-#     st.success('Done!')
-
 """
 
 'The next step will be to generate the frequent itemsets that have a support of at "
@@ -192,6 +184,7 @@ with col1:
 "rules including the metrics 'score', 'confidence', and 'lift'
 
 """
+with col2:
     with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
         rules = pd.read_csv('rules.csv')
 
