@@ -832,34 +832,34 @@ ref_date = RFM_df['InvoiceDate'].max() + dt.timedelta(days=1)
 
 
 st.markdown("----")
-# st.markdown(" <h3 style='text-align: center;'>Product recomendation <i>(people who bought this also bought)</i>:</h3>", unsafe_allow_html=True)
-# col1, col2, col3= st.columns((.1,1,.1))
-# with col1:
-#     pass
-# with col2:
-#     """
-#     The product recommendation part of this project is going to make use of the Association Rules that where uncovered in the MBA section. Product recomentation is basically one of the advantages of Market Basket Analysis where you can recommend to customers products that are in the same itemsets as the customer's current products.
-#     """
-# with col3:
-#     pass
+st.markdown(" <h3 style='text-align: center;'>Product recomendation <i>(people who bought this also bought)</i>:</h3>", unsafe_allow_html=True)
+col1, col2, col3= st.columns((.1,1,.1))
+with col1:
+    pass
+with col2:
+    """
+    The product recommendation part of this project is going to make use of the Association Rules that where uncovered in the MBA section. Product recomentation is basically one of the advantages of Market Basket Analysis where you can recommend to customers products that are in the same itemsets as the customer's current products.
+    """
+with col3:
+    pass
 
 
 
 
-# st.markdown("---")
+st.markdown("---")
 
 
 
 
 
 
-# st.markdown("---")
+st.markdown("---")
 
-# st.markdown("### ***Conclusion***")
+st.markdown("### ***Conclusion***")
 
-# st.markdown("This was a very interesting project which covered a wide array"
-#             " of topics that seem different but quite similar. For further "
-#             "research or analysis, it would be interesting to do the market "
-#             "basket analysis on the clusters that resulted (with the help of the"
-#             " K-means clustering) from the recency, frequency, and monetary value "
-#             "analysis and do market basket analysis on each of them")
+st.markdown("This was a very interesting project which covered a wide array"
+            " of topics that seem different but quite similar. For further "
+            "research or analysis, it would be interesting to do the market "
+            "basket analysis on the clusters that resulted (with the help of the"
+            " K-means clustering) from the recency, frequency, and monetary value "
+            "analysis and do market basket analysis on each of them")
