@@ -50,10 +50,6 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 
-st.set_page_config( page_title="Market Basket Analysis App",
-                    page_icon= "random",
-                    layout="wide"
- )
 
 
 
