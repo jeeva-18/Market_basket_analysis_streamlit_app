@@ -15,4 +15,4 @@ seaborn==0.11.2
 SQLAlchemy==1.4.25
 streamlit==1.21.0
 wordcloud==1.8.2.2
-st_pages==0.4.1
+st_pages==0.4.0
