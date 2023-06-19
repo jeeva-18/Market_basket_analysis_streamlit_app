@@ -171,34 +171,25 @@ mba_country_list = [
 
 col1, col2, col3= st.columns((3))
 with col1:
-    option = st.selectbox(
-        'Please Choose a country for the Market Basket Analysis',
-        mba_country_list)
-    if option == "All":
-        st.markdown("We will at data from All the countries")
-    else:
-        st.markdown(f"We will be looking at data from {option}")
+#     option = st.selectbox(
+#         'Please Choose a country for the Market Basket Analysis',
+#         mba_country_list)
+#     if option == "All":
+#         st.markdown("We will at data from All the countries")
+#     else:
+#         st.markdown(f"We will be looking at data from {option}")
 
 
-MBA_df = choose_country(country=option)
+# MBA_df = choose_country(country=option)
 
 """
 We are going to use the Apriori Algorithm for the association rule mining/analysis. Apriori is an algorithm for frequent item set mining and association rule learning over relational dataset. It proceeds by identifying the frequent individual items in the dataset and extending them to larger and larger item sets as long as those item sets appear sufficiently often in the dataset. The frequent item sets determined by Apriori can be used to determine association rules which highlight general trends, pattern, and relationships in the dataset.
 """
 #we are going to rearrage the dataframe having the 'InvoiceNo' column the index, so that each row contains all the items purchased under the same invoice
-basket = (MBA_df.groupby(['InvoiceNo', 'Description'])['Quantity'].sum().unstack().reset_index().fillna(0).set_index('InvoiceNo'))
+# basket = (MBA_df.groupby(['InvoiceNo', 'Description'])['Quantity'].sum().unstack().reset_index().fillna(0).set_index('InvoiceNo'))
 st.markdown("Below is the one-hot encoded basket with the InvoiceNo #s being the index")
 
-def change_dtype_to_list(x):
-    x = list(x)
-    return x
 
-def encoder(x):
-  if(x <= 0):
-    return 0
-  if(x >= 1):
-    return 1
-col1, col2, col3= st.columns((.1,1,.1))
 with col1:
     pass
 with col2:
