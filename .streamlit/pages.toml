@@ -5,5 +5,5 @@ icon = "🏠"
 
 [[pages]]
 path = "others/page2.py"
-name = "Page 2"
-icon = ":books:"
+name = "Exploratory Data Analysis"
+icon = "⚽"
