@@ -119,5 +119,11 @@ RFM_df.reset_index(inplace=True)
 with st.spinner("RFM analysis enables marketers to increase revenue by targeting specific groups of existing customers"):
     st.dataframe(RFM_df.head(10))
 
+agg_rfm = RFM_df[["RFM_Score", "Recency", "Frequency", "Monetary"]].groupby("RFM_Score").agg(["mean", "count"])
+agg_rfm
+
+with st.spinner("RFM analysis based on mean and count"):
+    st.dataframe(agg_rfm)
+
 
 
