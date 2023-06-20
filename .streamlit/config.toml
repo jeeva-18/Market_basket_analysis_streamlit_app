@@ -3,6 +3,6 @@ base="dark"
 primaryColor ='#FF6700'
 secondaryBackgroundColor = '#737373' 
 textColor = 'white'
-font="serif"
+font="san-serif"
 [browser]
 gatherUsageStats = false
