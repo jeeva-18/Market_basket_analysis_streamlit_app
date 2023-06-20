@@ -25,7 +25,7 @@ from sklearn.cluster import KMeans
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import association_rules
 
-st.markdown(" <h3 style='text-align: center;'>Customer Segmentation:</h3>", unsafe_allow_html=True)
+st.markdown(" <h3 style='text-align: center;color:#FA5B3C''>Customer Segmentation:</h3>", unsafe_allow_html=True)
 """
 Customer segmentation is the process of dividing customers into groups based on common characteristics so companies can market to each group effectively and appropriately.
 * RFM (recency, frequency, monetary) Analysis
