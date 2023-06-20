@@ -17,3 +17,8 @@ icon = "👜"
 path = "others/page4.py"
 name = "Customer Segmentation"
 icon = "👜"
+
+[[pages]]
+path = "others/page5.py"
+name = "Product Recommentation"
+icon = "👜"
