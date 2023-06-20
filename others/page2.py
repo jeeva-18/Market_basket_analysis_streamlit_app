@@ -115,7 +115,7 @@ def choose_country(country, data = df):
 
     return temp_df
 
-st.markdown(" <h3 style='text-align: center;'>Exploratory Data Analysis <i>(EDA)</i>:</h3>", unsafe_allow_html=True)
+st.markdown(" <h3 style='text-align: center;color:#FA5B3C'>Exploratory Data Analysis(EDA):</h3>", unsafe_allow_html=True)
 col1, col2, col3= st.columns((.1,1,.1))
 with col1:
     pass
