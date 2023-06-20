@@ -32,7 +32,7 @@ from numpy.lib.arraysetops import unique
 
 st.markdown(" <h3 style='text-align: center;'>Product recomendation <i>(people who bought this also bought)</i>:</h3>", unsafe_allow_html=True)
 with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
-  product = pd.read_csv('product_rec.csv')
+  product = pd.read_csv('others/product_rec.csv')
 
 st.dataframe(product.head(10))
 
