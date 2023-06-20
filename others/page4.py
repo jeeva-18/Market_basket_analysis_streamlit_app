@@ -118,15 +118,12 @@ RFM_df.reset_index(inplace=True)
 
 with st.spinner("RFM analysis enables marketers to increase revenue by targeting specific groups of existing customers"):
     st.dataframe(RFM_df.head(10))
-col1, col2, col3= st.columns((1,.1,1))
-with col1:
-    fig = px.violin(x= RFM_df['Clusters'],y= RFM_df['Recency'],title="Clusters v Recency")
-    st.plotly_chart(fig)
-with col2:
-    pass
 
-with col3:
-    pass
+    
+fig = px.box(x= RFM_df['Clusters'],y= RFM_df['Recency'],title="Clusters v Recency")
+# fig.show()
+st.plotly_chart(fig)
+
 
 
 
