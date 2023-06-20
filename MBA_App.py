@@ -31,7 +31,12 @@ from st_pages import show_pages_from_config, add_page_title
 # add_page_title()
 
 # show_pages_from_config()
-st.set_page_config(page_title="REtail", page_icon=None, layout="wide", initial_sidebar_state="auto")
+st.set_page_config(
+    page_title="Ex-stream-ly Cool App",
+    page_icon="🧊",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
 
 warnings.filterwarnings('ignore')
 #lets import our data from the AWS RDS MySQL DataBase
