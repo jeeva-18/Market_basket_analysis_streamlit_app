@@ -73,16 +73,16 @@ col1, col2,col3 = st.columns((1,0.1,1))
 
 with col1:
    
-    st.markdown(" <h3 style='color:#FF6700;' >Project Contributor:</h3>", unsafe_allow_html=True)
+    st.markdown(" <h3 style='color:#FF6700;' >PROJECT CONTRIBUTOR:</h3>", unsafe_allow_html=True)
     st.markdown("##### Santhosh Kumar.P")
     st.markdown("MBA(Business Analytics)")
 
-    st.markdown(" <h3 style='color:#FF6700;' >Project Introdution:</h3>", unsafe_allow_html=True)
+    st.markdown(" <h3 style='color:#FF6700;' >PROJECT INTRODUCTION:</h3>", unsafe_allow_html=True)
     st.markdown("***Business Proposition:*** This project aims to provide a Retail "
                 "Business with a strategy that helps improve their product sales, "
                 "inventory management, and customer retention, which in turn would "
                 "improve the profitability of the business. In the retail environment, "
-                "profitability and the `bottom line` is at the focal point of any "
+                "profitability and the bottom line is at the focal point of any "
                 "organization or business in this space. From product sales, through "
                 "inventory management to customer acquisition and retention all this one "
                 "way or the other affects the business' profits and net revenue. Transaction "
@@ -101,12 +101,12 @@ with col1:
     > * RFM (recency, frequency, monetary) Analysis
     3. Product Recomendation (people who bought this also bought)
     """
-    st.markdown("In addition, we created this `Streamlit` interactive data visualization "
+    st.markdown("In addition, we created this Streamlit interactive data visualization "
                 "tool that allows users interact with the data and analytics.")
 with col2:
     pass
 with col3:
-    st.markdown(" <h3 style='color:#FF6700;' >Data Collection:</h3>", unsafe_allow_html=True)
+    st.markdown(" <h3 style='color:#FF6700;' >DATA COLLECTION:</h3>", unsafe_allow_html=True)
 
     """
     **General Information About the Data**
@@ -155,9 +155,9 @@ df = load_data()
 
 st.markdown(" <h3 style='color:#FF6700;' >Lets take a look at the data:</h3>", unsafe_allow_html=True)
 """
-We are going to use the pandas `.shape` function/method to the total number of columns and rows of the dataframe. We can see that our dataframe contains 481313 rows and 16 columns
+We are going to use the pandas .shape function/method to the total number of columns and rows of the dataframe. We can see that our dataframe contains 481313 rows and 16 columns
 
-We'll use the pandas `.info()` function so see the general infomation (data types, null value count, etc.) about the data.
+We'll use the pandas .info() function so see the general infomation (data types, null value count, etc.) about the data.
 """
 st.markdown(f"###### ***The shape of the data***: {df.shape}")
 
