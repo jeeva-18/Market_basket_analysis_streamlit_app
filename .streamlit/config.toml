@@ -1,6 +1,6 @@
 [theme]
 base="dark"
-primaryColor ='cyan'
+primaryColor ='#FF87837'
 secondaryBackgroundColor = '#737373' 
 textColor = 'white'
 [browser]
