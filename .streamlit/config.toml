@@ -1,8 +1,9 @@
 [theme]
 base="dark"
-primaryColor ='orange'
+primaryColor="purple"
 secondaryBackgroundColor = '#737373' 
 textColor = 'white'
 font="san-serif"
+
 [browser]
 gatherUsageStats = false
