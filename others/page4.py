@@ -133,6 +133,9 @@ fig = px.box(x= RFM_df['Clusters'],y= RFM_df['Recency'],title="Clusters v Recenc
 # fig.show()
 st.plotly_chart(fig)
 
+temp_df = RFM_df[["Clusters","RFM_Score", "Recency", "Frequency", "Monetary"]].groupby("Clusters").agg(["mean"])
+temp_df.columns = ["RFM_Score mean", "Recency mean", "Frequency mean", "Monetary mean"]
+
 
 fig = px.box(x= RFM_df['Clusters'],y= RFM_df['Frequency'],title="Clusters v Frequency")
 # fig.show()
