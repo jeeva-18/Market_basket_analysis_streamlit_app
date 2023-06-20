@@ -27,16 +27,10 @@ from mlxtend.frequent_patterns import association_rules
 from st_pages import show_pages_from_config, add_page_title
 
 # # Either this or add_indentation() MUST be called on each page in your
-# # app to add indendation in the sidebar
-# add_page_title()
+# app to add indendation in the sidebar
+add_page_title()
 
-# show_pages_from_config()
-st.set_page_config(
-    page_title="Ex-stream-ly Cool App",
-    page_icon="🧊",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+show_pages_from_config()
 
 warnings.filterwarnings('ignore')
 #lets import our data from the AWS RDS MySQL DataBase
