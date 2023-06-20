@@ -74,7 +74,8 @@ col1, col2,col3 = st.columns((1,0.1,1))
 with col1:
    
     st.markdown("### ***Project Contributor:***")
-    st.markdown("`Santhosh Kumar`")
+    st.markdown("Santhosh Kumar.P")
+    st.markdown("MBA(Business Analytics)")
 
     st.markdown("### **Project Introduction**")
     st.markdown("***Business Proposition:*** This project aims to provide a Retail "
