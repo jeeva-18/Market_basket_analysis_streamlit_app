@@ -59,7 +59,8 @@ with col1:
 
 with col2:
     st.markdown(" <h1 style='text-align: center;' >RETAIL ANALYTICS : </h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center;'><i><b>Unveiling Consumer Behavior and Enhancing Sales through EDA,Market Basket Analysis, Customer Segmentation and Product Recommendation.</b></i></p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;
+    font-size: 14px;'><i><b>Unveiling Consumer Behavior and Enhancing Sales through EDA,Market Basket Analysis, Customer Segmentation and Product Recommendation.</b></i></p>", unsafe_allow_html=True)
     st.markdown("<center><img src='https://github.com/jeeva-18/streamlit_app/blob/main/Assets/Grey-Goods-under-the-Consumer-Protection-Act-e1566375131654.jpg?raw=1' width=620/></center>", unsafe_allow_html=True)
 
 
