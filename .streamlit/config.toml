@@ -1,7 +1,7 @@
 [theme]
 base="dark"
 primaryColor="purple"
-secondaryBackgroundColor = '#FF6700' 
+secondaryBackgroundColor = '#FA5B3C' 
 textColor = 'white'
 font="san-serif"
 
