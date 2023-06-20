@@ -42,5 +42,83 @@ The “RFM” in RFM analysis stands for recency, frequency and monetary value. 
 RFM analysis enables marketers to increase revenue by targeting specific groups of existing customers (i.e., customer segmentation) with messages and offers that are more likely to be relevant based on data about a particular set of behaviors.
 """
 
+@st.cache_data(experimental_allow_widgets =False, ttl= 1200)
+def load_data():
+    """
+    This fuction loads data from the aws rds mysql table
+    """
+    data = None
+    engine = create_engine(f"mysql+pymysql://{user}:{password}@{host}/{database}")
+
+    try:
+        query = f"SELECT * FROM MBA_Online_Retail_Data"
+        data = pd.read_sql(query,engine)
+
+    except Exception as e:
+        print(str(e))
+    
+    return data
+#loading the data
+df = load_data() 
+
+@st.cache_data(experimental_allow_widgets =False)
+def choose_country(country = "All", data = df):
+  """
+  This fuction takes in a country name and filters the data frame for just country
+  if the there is no country inputed the fuction return the un filtered dataframe
+  """
+  if country == "All":
+    return data
+  else:
+    temp_df = data[data["Country"] == country]
+    temp_df.reset_index(drop= True, inplace= True)
+
+    return temp_df
+
+rfm_country_list = [
+                    'United Kingdom',
+                    'Germany',
+                    'France',
+                    'EIRE',
+                    'Spain',
+                    'Netherlands',
+                    'Switzerland',
+                    'Belgium',
+                    'Portugal',
+                    'Australia']
+
+col1, col2, col3= st.columns((3))
+with col1:
+    option = st.selectbox(
+        'Please Choose a country for the Recency, Frequency, Monetary Analysis',
+        rfm_country_list)
+    if option == "All":
+        st.markdown("We will at data from All the countries")
+    else:
+        st.markdown(f"We will be looking at data from {option}")
+
+
+RFM_df = choose_country(country=option)
+
+#the first thing that we are going to need is the reference date 
+#in this case the day after the last recorded date in the dataset plus a day
+ref_date = RFM_df['InvoiceDate'].max() + dt.timedelta(days=1)
+df_temp = RFM_df[RFM_df['CustomerID'] != "Guest Customer"]
+RFM_df = df_temp.groupby('CustomerID').agg({'InvoiceDate': lambda x: (ref_date - x.max()).days,
+                                    'InvoiceNo': lambda x: x.nunique(),
+                                    'Sales Revenue': lambda x: x.sum()})
+
+RFM_df.columns = ['Recency', 'Frequency', 'Monetary']
+RFM_df["R"] = pd.qcut(RFM_df['Recency'].rank(method="first"), 4, labels=[4, 3, 2, 1])
+RFM_df["F"] = pd.qcut(RFM_df['Frequency'].rank(method="first"), 4, labels=[1, 2, 3, 4])
+RFM_df["M"] = pd.qcut(RFM_df['Monetary'].rank(method="first"), 4, labels=[1, 2, 3, 4])
+RFM_df['RFM_Score'] = (RFM_df['R'].astype(int)+RFM_df['F'].astype(int)+RFM_df['M'].astype(int))
+
+RFM_df.reset_index(inplace=True)
+
+with st.spinner("RFM analysis enables marketers to increase revenue by targeting specific groups of existing customers")
+
+    st.dataframe(RFM_df.head(10))
+
 
 
