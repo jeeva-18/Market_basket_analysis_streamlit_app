@@ -34,7 +34,7 @@ st.markdown(" <h3 style='text-align: center;'>Product recomendation <i>(people w
 with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
   product = pd.read_csv('others/product_rec.csv')
 
-st.dataframe(product.head(10))
+st.dataframe(product)
 
 
 
