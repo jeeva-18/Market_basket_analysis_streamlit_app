@@ -35,7 +35,7 @@ st.markdown(" <h3 style='text-align: center;'>Product recomendation <i>(people w
 product = pd.read_csv('product_rec.csv')
 
 
-# st.dataframe(product)
+st.dataframe(product.head(10))
 
 
 
