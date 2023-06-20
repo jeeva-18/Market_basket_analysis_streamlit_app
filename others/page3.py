@@ -101,7 +101,7 @@ def choose_country(country, data = df):
 
     return temp_df
   
-st.markdown(" <h1 style='text-align: center;'>Market Basket Analysis <i>(MBA)</i>:</h1>", unsafe_allow_html=True)
+st.markdown(" <h1 style='text-align: center;color:#FA5B3C''>Market Basket Analysis <i>(MBA)</i>:</h1>", unsafe_allow_html=True)
 r"""
 **What is Market Basket Analysis?:**
 
