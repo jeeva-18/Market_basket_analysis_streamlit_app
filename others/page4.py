@@ -142,6 +142,35 @@ fig = px.box(x= RFM_df['Clusters'],y= RFM_df['Monetary'],title="Clusters v Monet
 # fig.show()
 st.plotly_chart(fig)
 
+specs = [[{'type':'domain'}, {'type':'domain'}], [{'type':'domain'}, {'type':'domain'}]]
+fig = make_subplots(rows=2, cols=2,
+                    subplot_titles=("RFM_Score", "Recency", "Frequency","Monetary"),
+                    specs=specs
+                    )
+
+fig.add_trace(
+    go.Pie(values = temp_df['RFM_Score mean'], labels = temp_df.index,
+    name = 'RFM_Score'),
+    1, 1
+)
+fig.add_trace(
+    go.Pie(values = temp_df['Recency mean'], labels = temp_df.index,
+    name = 'Recency'),
+    1, 2
+)
+fig.add_trace(
+    go.Pie(values = temp_df['Frequency mean'], labels = temp_df.index,
+    name = 'Frequency'),
+    2, 1
+)
+fig.add_trace(
+    go.Pie(values = temp_df['Monetary mean'], labels = temp_df.index,
+    name = 'Monetary'),
+    2, 2
+)
+fig.update_layout(height=800, width=1200, title_text=" ")
+st.plotly_chart(fig)
+
 
 
 
