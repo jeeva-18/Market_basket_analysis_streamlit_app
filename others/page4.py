@@ -118,7 +118,16 @@ RFM_df.reset_index(inplace=True)
 
 with st.spinner("RFM analysis enables marketers to increase revenue by targeting specific groups of existing customers"):
     st.dataframe(RFM_df.head(10))
+scaler = StandardScaler()
+RFM_df_log = RFM_df[['Recency','Frequency','Monetary','RFM_Score']]
+RFM_df_scaled = scaler.fit_transform(RFM_df_log)
+RFM_df_scaled = pd.DataFrame(RFM_df_scaled)
+RFM_df_scaled.columns = ['Recency','Frequency','Monetary','RFM_Score']
 
+kmeans = KMeans(n_clusters=4, init='k-means++',n_init=10,max_iter=50,verbose=0)
+kmeans.fit(RFM_df_scaled)
+
+RFM_df['Clusters'] = kmeans.labels_
     
 fig = px.box(x= RFM_df['Clusters'],y= RFM_df['Recency'],title="Clusters v Recency")
 # fig.show()
