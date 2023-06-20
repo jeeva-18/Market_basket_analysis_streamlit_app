@@ -120,7 +120,7 @@ with st.spinner("RFM analysis enables marketers to increase revenue by targeting
     st.dataframe(RFM_df.head(10))
 col1, col2, col3= st.columns((1,.1,1))
 with col1:
-    fig = px.violin(data_frame=RFM_df, x= 'Clusters',y= 'Recency',title="Clusters v Recency")
+    fig = px.violin(data_frame=RFM_df, x='Clusters', y= 'Recency',title="Clusters v Recency")
     st.plotly_chart(fig)
 with col2:
     pass
