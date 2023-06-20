@@ -86,21 +86,7 @@ def choose_country(country = "All", data = df):
     return temp_df
 
 
-def wordcloud_of_Description(df, title):
-    """
-    This fuction creates a word cloud
-    inputs a data frame converts it to tuples and uses the input 'title' as the title of the word cloud
-    """
-    plt.rcParams["figure.figsize"] = (20,20)
-    tuples = [tuple(x) for x in df.values]
-    wordcloud = WordCloud(max_font_size=100,  background_color="white").generate_from_frequencies(dict(tuples))
-    plt.imshow(wordcloud)
-    plt.axis('off')
-    plt.title(title, fontsize = 27)
-    plt.show()
 
-
-country_list = ["All"] + list(dict(df['Country'].value_counts()).keys())
 @st.cache_data(experimental_allow_widgets =False)
 def choose_country(country, data = df):
   """
@@ -169,7 +155,7 @@ mba_country_list = [
                     'Portugal',
                     'Australia']
 
-col1, col2, col3= st.columns((3))
+
 
 
 """
@@ -182,16 +168,11 @@ We are going to use the Apriori Algorithm for the association rule mining/analys
 "`MLxtend association_rules(), The function generates a DataFrame of association "
 "rules including the metrics 'score', 'confidence', and 'lift'
 """
-with col2:
-    with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
-        rules = pd.read_csv('rules.csv')
+with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
+    rules = pd.read_csv('rules.csv')
 
     """Assosiation Rules"""
     st.dataframe(rules.head())
-with col3:
-    pass
-
-
 
 
 
