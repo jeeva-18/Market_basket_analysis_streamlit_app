@@ -58,7 +58,7 @@ with col1:
     st.write("")
 
 with col2:
-    st.markdown(" <h1 style='text-align: center;color: #FF6700' >RETAIL ANALYTICS : </h1>", unsafe_allow_html=True)
+    st.markdown(" <h1 style='text-align: center;color: #FA5B3C' >RETAIL ANALYTICS : </h1>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center;'>Unveiling Consumer Behavior and Enhancing Sales through EDA,Market Basket Analysis, Customer Segmentation and Product Recommendation.</h3>", unsafe_allow_html=True)
     st.markdown("<center><img src='https://github.com/jeeva-18/streamlit_app/blob/main/Assets/Grey-Goods-under-the-Consumer-Protection-Act-e1566375131654.jpg?raw=1' width=620/></center>", unsafe_allow_html=True)
 
@@ -73,11 +73,11 @@ col1, col2,col3 = st.columns((1,0.1,1))
 
 with col1:
    
-    st.markdown(" <h3 style='color:#FF6700;' >PROJECT CONTRIBUTOR:</h3>", unsafe_allow_html=True)
+    st.markdown(" <h3 style='color:#FA5B3C;' >PROJECT CONTRIBUTOR:</h3>", unsafe_allow_html=True)
     st.markdown("##### Santhosh Kumar.P")
     st.markdown("MBA(Business Analytics)")
 
-    st.markdown(" <h3 style='color:#FF6700;' >PROJECT INTRODUCTION:</h3>", unsafe_allow_html=True)
+    st.markdown(" <h3 style='color:#FA5B3C;' >PROJECT INTRODUCTION:</h3>", unsafe_allow_html=True)
     st.markdown("***Business Proposition:*** This project aims to provide a Retail "
                 "Business with a strategy that helps improve their product sales, "
                 "inventory management, and customer retention, which in turn would "
@@ -106,7 +106,7 @@ with col1:
 with col2:
     pass
 with col3:
-    st.markdown(" <h3 style='color:#FF6700;' >DATA COLLECTION:</h3>", unsafe_allow_html=True)
+    st.markdown(" <h3 style='color:#FA5B3C;' >DATA COLLECTION:</h3>", unsafe_allow_html=True)
 
     """
     **General Information About the Data**
@@ -153,7 +153,7 @@ df = load_data()
 
 
 
-st.markdown(" <h3 style='color:#FF6700;' >Lets take a look at the data:</h3>", unsafe_allow_html=True)
+st.markdown(" <h3 style='color:#FA5B3C;' >Lets take a look at the data:</h3>", unsafe_allow_html=True)
 """
 We are going to use the pandas .shape function/method to the total number of columns and rows of the dataframe. We can see that our dataframe contains 481313 rows and 16 columns
 
