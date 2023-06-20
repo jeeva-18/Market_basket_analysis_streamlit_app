@@ -116,8 +116,7 @@ RFM_df['RFM_Score'] = (RFM_df['R'].astype(int)+RFM_df['F'].astype(int)+RFM_df['M
 
 RFM_df.reset_index(inplace=True)
 
-with st.spinner("RFM analysis enables marketers to increase revenue by targeting specific groups of existing customers")
-
+with st.spinner("RFM analysis enables marketers to increase revenue by targeting specific groups of existing customers"):
     st.dataframe(RFM_df.head(10))
 
 
