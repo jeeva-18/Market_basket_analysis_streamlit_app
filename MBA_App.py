@@ -174,9 +174,7 @@ with col3:
     st.markdown("***The below is the info of the data***")
     st.dataframe(df_info)
 
-st.success("If you want to take a look at how the data was cleaned, you "
-            "can go check out the jupyter notebook of this project at: "
-            "https://github.com/kkrusere/Market-Basket-Analysis-on-the-Online-Retail-Data/blob/main/MBA_Online-Retail_Data.ipynb")
+
 
 ######################functions############################
 
