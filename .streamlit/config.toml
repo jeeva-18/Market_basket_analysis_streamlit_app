@@ -1,7 +1,7 @@
 [theme]
 base="dark"
 primaryColor ='cyan'
-secondaryBackgroundColor = 'blue' 
-textColor = 'pink'
+secondaryBackgroundColor = '#737373' 
+textColor = 'white'
 [browser]
 gatherUsageStats = false
