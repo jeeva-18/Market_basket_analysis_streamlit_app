@@ -12,3 +12,8 @@ icon = "⚽"
 path = "others/page3.py"
 name = "Market Basket Analysis"
 icon = "👜"
+
+[[pages]]
+path = "others/page4.py"
+name = "Customer Segmentation"
+icon = "👜"
