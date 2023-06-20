@@ -129,16 +129,16 @@ kmeans.fit(RFM_df_scaled)
 
 RFM_df['Clusters'] = kmeans.labels_
     
-fig = px.violin(x= RFM_df['Clusters'],y= RFM_df['Recency'],title="Clusters v Recency")
+fig = px.box(x= RFM_df['Clusters'],y= RFM_df['Recency'],title="Clusters v Recency")
 # fig.show()
 st.plotly_chart(fig)
 
 
-fig = px.violin(x= RFM_df['Clusters'],y= RFM_df['Frequency'],title="Clusters v Frequency")
+fig = px.box(x= RFM_df['Clusters'],y= RFM_df['Frequency'],title="Clusters v Frequency")
 # fig.show()
 st.plotly_chart(fig)
 
-fig = px.violin(x= RFM_df['Clusters'],y= RFM_df['Monetary'],title="Clusters v Monetary")
+fig = px.box(x= RFM_df['Clusters'],y= RFM_df['Monetary'],title="Clusters v Monetary")
 # fig.show()
 st.plotly_chart(fig)
 
