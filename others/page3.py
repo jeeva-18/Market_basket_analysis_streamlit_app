@@ -176,13 +176,11 @@ col1, col2, col3= st.columns((3))
 We are going to use the Apriori Algorithm for the association rule mining/analysis. Apriori is an algorithm for frequent item set mining and association rule learning over relational dataset. It proceeds by identifying the frequent individual items in the dataset and extending them to larger and larger item sets as long as those item sets appear sufficiently often in the dataset. The frequent item sets determined by Apriori can be used to determine association rules which highlight general trends, pattern, and relationships in the dataset.
 """
 """
-
 'The next step will be to generate the frequent itemsets that have a support of at "
 "least 10% using the MLxtend Apriori fuction which returns frequent itemsets from a "
 "one-hot DataFrame. And then can look at the rules  of association using the "
 "`MLxtend association_rules(), The function generates a DataFrame of association "
 "rules including the metrics 'score', 'confidence', and 'lift'
-
 """
 with col2:
     with st.spinner("Generating the Frequent Itemsets and Assosiation Rules..."):
