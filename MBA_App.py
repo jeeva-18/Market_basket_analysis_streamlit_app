@@ -73,11 +73,11 @@ col1, col2,col3 = st.columns((1,0.1,1))
 
 with col1:
    
-    st.markdown(" <h1 style='color:blue;' >RETAIL ANALYTICS : </h1>", unsafe_allow_html=True)
+    st.markdown(" <h3 style='color:#FF6700;' >Project Contributor:</h3>", unsafe_allow_html=True)
     st.markdown("##### Santhosh Kumar.P")
     st.markdown("MBA(Business Analytics)")
 
-    st.markdown("### **Project Introduction**")
+    st.markdown(" <h3 style='color:#FF6700;' >Project Introdution:</h3>", unsafe_allow_html=True)
     st.markdown("***Business Proposition:*** This project aims to provide a Retail "
                 "Business with a strategy that helps improve their product sales, "
                 "inventory management, and customer retention, which in turn would "
@@ -106,7 +106,7 @@ with col1:
 with col2:
     pass
 with col3:
-    st.markdown("### ***Data Collection:***")
+    st.markdown(" <h3 style='color:#FF6700;' >Data Collection:</h3>", unsafe_allow_html=True)
 
     """
     **General Information About the Data**
@@ -153,7 +153,7 @@ df = load_data()
 
 
 
-st.markdown("#### ***Lets take a look at the data:***")
+st.markdown(" <h3 style='color:#FF6700;' >Lets take a look at the data:</h3>", unsafe_allow_html=True)
 """
 We are going to use the pandas `.shape` function/method to the total number of columns and rows of the dataframe. We can see that our dataframe contains 481313 rows and 16 columns
 
