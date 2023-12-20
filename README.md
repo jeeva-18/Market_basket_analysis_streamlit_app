@@ -4,4 +4,4 @@
 <center><img src="https://github.com/kkrusere/Market-Basket-Analysis-on-the-Online-Retail-Data/blob/main/Assets/MBA.jpg?raw=1" width=600/></center>
 
 ***Project Contributors:*** Kuzi Rusere<br>
-**MBA streamlit App URL:** https://kkrusere-market-basket-analysis-on-the-online-re-mba-app-oi5iot.streamlitapp.com/
+**MBA streamlit App URL:** https://jeeva-18-streamlit-app-mba-app-nu7c51.streamlit.app/
